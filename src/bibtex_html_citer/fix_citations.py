@@ -45,31 +45,30 @@ def main(bibtex, html, no_overwrite):
                         # For citation within \cite{} brackets
                         for i, key in enumerate(keys.split(',')):
                             try:
-
-                                # Access bib entry
+                                # Access bibtex entry using given citation key
                                 entry = bib[key]
-
-                                # Info for entry
-                                author = entry['author'].split(',')[0] + ' et al. ' + entry['year'] + '.'
-                                comma = '' if i + 1 == num_citations else ', '
-
-                                # If DOI
-                                if 'doi' in entry.keys():
-                                    link += link_template + 'https://doi.org/'
-                                    link += entry['doi'] + '/">{}{}</a>'.format(author, comma)
-
-                                # If URL
-                                elif 'url' in entry.keys():
-                                    link += link_template + entry['url'] + '/">{}{}</a>'.format(author, comma)
-
-                                # If no DOI / URL post author/year
-                                else:
-                                    link = '<b>{}</b>{}'.format(author, comma)
-
                             # If no entry found
                             except KeyError:
                                 click.echo('Entry {} not found in bibtex file!'.format(key))
                                 link += '<b>{}</b>'.format(key)
+                                continue
+
+                            # Info for entry: <Author> et al. <Year>.
+                            author = entry['author'].split(',')[0] + ' et al. ' + entry['year'] + '.'
+                            comma = '' if i + 1 == num_citations else ', '  # If there are more entries, add comma
+
+                            # If DOI
+                            if 'doi' in entry.keys():
+                                link += link_template + 'https://doi.org/'
+                                link += entry['doi'] + '/">{}{}</a>'.format(author, comma)
+
+                            # If URL
+                            elif 'url' in entry.keys():
+                                link += link_template + entry['url'] + '/">{}{}</a>'.format(author, comma)
+
+                            # If no DOI / URL post author/year
+                            else:
+                                link = '<b>{}</b>{}'.format(author, comma)
 
                         # Finish link and append
                         link += ']'
