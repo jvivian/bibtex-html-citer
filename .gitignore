@@ -1,0 +1,6 @@
+# User-specific stuff:
+.idea/**/workspace.xml
+
+*.pyc
+src/bibtex_html_citer.egg-info
+dist/
