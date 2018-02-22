@@ -10,4 +10,7 @@ setup(name='bibtex-html-citer',
       package_dir={'': 'src'},
       packages=find_packages('src'),
       install_requires=['bibtexparser>=1.0.1',
-                        'click'])
+                        'click'],
+      entry_points={
+            'console_scripts': ['cite-fix=fix_citations:main']})
+
