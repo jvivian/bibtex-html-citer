@@ -12,5 +12,5 @@ setup(name='bibtex-html-citer',
       install_requires=['bibtexparser>=1.0.1',
                         'click'],
       entry_points={
-            'console_scripts': ['cite-fix=fix_citations:main']})
+            'console_scripts': ['cite-fix=bibtex_html_citer.fix_citations:main']})
 
