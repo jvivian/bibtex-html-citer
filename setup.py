@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='bibtex-html-citer',
-      version='1.0a',
+      version='1.0.0',
       description='Finds `\cite{}` text in an HTML document and replaces with a link to DOI/URL.',
       url='http://github.com/jvivian/bibtex-html-citer',
       author='John Vivian',
