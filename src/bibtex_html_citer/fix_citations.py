@@ -50,6 +50,7 @@ def main(bibtex, html, no_overwrite):
                     continue
 
                 # If citation found, create cite flag and list to hold citation keys
+                # Use encode/decode only when necessary
                 in_cite = False
                 keys = []
                 for word in element.encode('utf-8').decode('ascii', 'ignore').split():
